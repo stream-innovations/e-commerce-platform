@@ -145,13 +145,15 @@ if (DATABASE_URL && DATABASE_TYPE === "postgres") {
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
-    // ...
-    plugins: [{
-        resolve: "@medusajs/admin",
-        /** @type {import('@medusajs/admin').PluginOptions} */
-        options: {
-            path: "app",
-        },
-    }, ],
-    // ...
+  // ...
+  plugins: [
+    {
+      resolve: "@medusajs/admin",
+      /** @type {import('@medusajs/admin').PluginOptions} */
+      options: {
+        path: "app",
+      },
+    },
+  ],
+  // ...
 }
