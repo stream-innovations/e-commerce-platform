@@ -32,17 +32,86 @@ const DATABASE_TYPE = process.env.DATABASE_TYPE || "sqlite";
 const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa-store";
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
+// Stripe keys
+const STRIPE_API_KEY = process.env.STRIPE_API_KEY || "";
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "";
+
 const plugins = [
-  `medusa-fulfillment-manual`,
-  `medusa-payment-manual`,
-  // To enable the admin plugin, uncomment the following lines and run `yarn add @medusajs/admin`
-  // {
-  //   resolve: "@medusajs/admin",
-  //   /** @type {import('@medusajs/admin').PluginOptions} */
-  //   options: {
-  //     autoRebuild: true,
-  //   },
-  // },
+    `medusa-fulfillment-manual`,
+    `medusa-payment-manual`,
+    // To enable the admin plugin, uncomment the following lines and run `yarn add @medusajs/admin`
+    // Please note is not recommended to build the admin in production, cause a minimum of 2GB RAM
+    // is required.
+    {
+        resolve: "@medusajs/admin",
+        /** @type {import('@medusajs/admin').PluginOptions} */
+        options: {
+            autoRebuild: true,
+        },
+    },
+    {
+        resolve: `medusa-payment-stripe`,
+        options: {
+            api_key: STRIPE_API_KEY,
+            webhook_secret: STRIPE_WEBHOOK_SECRET,
+            automatic_payment_methods: true,
+        },
+    },
+    {
+        resolve: `medusa-file-minio`,
+        options: {
+            endpoint: process.env.MINIO_ENDPOINT,
+            bucket: process.env.MINIO_BUCKET,
+            access_key_id: process.env.MINIO_ACCESS_KEY,
+            secret_access_key: process.env.MINIO_SECRET_KEY,
+        },
+    },
+    {
+        resolve: `medusa-plugin-sendgrid`,
+        options: {
+            api_key: process.env.SENDGRID_API_KEY,
+            from: process.env.SENDGRID_FROM,
+            order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
+            localization: {
+                "es-ES": { // locale key
+                    order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID_LOCALIZED,
+                }
+            }
+        }
+    },
+    {
+        resolve: `medusa-plugin-meilisearch`,
+        options: {
+            config: {
+                host: process.env.MEILISEARCH_HOST,
+                apiKey: process.env.MEILISEARCH_API_KEY,
+            },
+            settings: {
+                // index name
+                products: {
+                    indexSettings: {
+                        searchableAttributes: [
+                            "title",
+                            "description",
+                            "variant_sku",
+                        ],
+                        displayedAttributes: [
+                            "title",
+                            "description",
+                            "variant_sku",
+                            "thumbnail",
+                            "handle",
+                        ],
+                    },
+                    primaryKey: "id",
+                    transform: (product) => ({
+                        id: product.id,
+                        // other attributes...
+                    }),
+                },
+            },
+        },
+    },
 ];
 
 const modules = {
@@ -80,7 +149,15 @@ if (DATABASE_URL && DATABASE_TYPE === "postgres") {
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
-  projectConfig,
-  plugins,
-	modules,
-};
+  // ...
+  plugins: [
+    {
+      resolve: "@medusajs/admin",
+      /** @type {import('@medusajs/admin').PluginOptions} */
+      options: {
+        path: "app",
+      },
+    },
+  ],
+  // ...
+}
