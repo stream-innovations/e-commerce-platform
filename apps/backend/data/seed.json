@@ -4,7 +4,7 @@
   },
   "users": [
     {
-      "email": "admin@medusa-test.com",
+      "email": "admin-test@streampay.store",
       "password": "supersecret"
     }
   ],
@@ -116,7 +116,7 @@
   ],
   "products": [
     {
-      "title": "Medusa T-Shirt",
+      "title": "StreamPay T-Shirt",
       "subtitle": null,
       "description": "Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.",
       "handle": "t-shirt",
@@ -326,7 +326,7 @@
       ]
     },
     {
-      "title": "Medusa Sweatshirt",
+      "title": "StreamPay Sweatshirt",
       "subtitle": null,
       "description": "Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.",
       "handle": "sweatshirt",
@@ -426,7 +426,7 @@
       ]
     },
     {
-      "title": "Medusa Sweatpants",
+      "title": "StreamPay Sweatpants",
       "subtitle": null,
       "description": "Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.",
       "handle": "sweatpants",
@@ -526,7 +526,7 @@
       ]
     },
     {
-      "title": "Medusa Shorts",
+      "title": "StreamPay Shorts",
       "subtitle": null,
       "description": "Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.",
       "handle": "shorts",
@@ -626,7 +626,7 @@
       ]
     },
     {
-      "title": "Medusa Hoodie",
+      "title": "StreamPay Hoodie",
       "subtitle": null,
       "description": "Reimagine the feeling of a classic hoodie. With our cotton hoodie, everyday essentials no longer have to be ordinary.",
       "handle": "hoodie",
@@ -726,7 +726,7 @@
       ]
     },
     {
-      "title": "Medusa Longsleeve",
+      "title": "StreamPay Longsleeve",
       "subtitle": null,
       "description": "Reimagine the feeling of a classic longsleeve. With our cotton longsleeve, everyday essentials no longer have to be ordinary.",
       "handle": "longsleeve",
@@ -826,7 +826,7 @@
       ]
     },
     {
-      "title": "Medusa Coffee Mug",
+      "title": "StreamPay Coffee Mug",
       "subtitle": null,
       "description": "Every programmer's best friend.",
       "handle": "coffee-mug",
