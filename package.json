@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@medusajs/admin": "^5.0.0",
-    "medusa-plugin-meilisearch": "^2.0.5"
-  }
-}
