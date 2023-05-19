@@ -20,8 +20,8 @@
         "seed": "cross-env medusa seed -f ./data/seed.json",
         "start": "cross-env npm run build && medusa start",
         "start:custom": "cross-env npm run build && node --preserve-symlinks index.js",
-        "dev:admin": "medusa-admin dev",
-        "build:admin": "medusa-admin build"
+        "dev:admin": "cross-env medusa-admin dev",
+        "build:admin": "cross-env npm run build && medusa start"
     },
     "dependencies": {
         "@babel/preset-typescript": "^7.21.4",
