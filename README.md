@@ -7,7 +7,8 @@ Medusa is a set of commerce modules and tools that enables thousands of develope
 
 cd apps/backend
 yarn start
+
 ### Storefront
 
 cd apps/storefront
-yarn dev
+yarn de
