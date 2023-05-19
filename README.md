@@ -11,4 +11,4 @@ yarn start
 ### Storefront
 
 cd apps/storefront
-yarn de
+yarn dev

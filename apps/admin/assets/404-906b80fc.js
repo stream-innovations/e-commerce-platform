@@ -1,1 +1,0 @@
-import{j as o,a as t}from"./index-e7a18dfd.js";import{S as s}from"./index-5243ee91.js";import{L as a}from"./layout-4c074b32.js";import"./index-7128677f.js";const n=()=>o(a,{children:[t(s,{title:"404: Not found"}),t("h1",{children:"NOT FOUND"}),t("p",{children:"You just hit a route that doesn't exist... the sadness."})]});export{n as default};
