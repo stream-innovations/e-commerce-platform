@@ -28,8 +28,9 @@ const ADMIN_CORS =
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000,https://streampay.store";
 
-const DATABASE_TYPE = process.env.DATABASE_TYPE || "sqlite";
-const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa-store";
+const DATABASE_URL =
+    process.env.DATABASE_URL || "postgres://localhost/medusa-store";
+
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 // Stripe keys
@@ -39,14 +40,20 @@ const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "sk_live_51N5
 const plugins = [
     `medusa-fulfillment-manual`,
     `medusa-payment-manual`,
-       // To enable the admin plugin, uncomment the following lines and run `yarn add @medusajs/admin`
+    {
+        resolve: `@medusajs/file-local`,
+        options: {
+            upload_dir: "uploads",
+        },
+    },
+    // To enable the admin plugin, uncomment the following lines and run `yarn add @medusajs/admin`
     // Please note is not recommended to build the admin in production, cause a minimum of 2GB RAM
     // is required.
-  {
-    resolve: "@medusajs/admin",
-    options: {
-      serve: true,
-      path: 'app'
+    {
+        resolve: "@medusajs/admin",
+        options: {
+            serve: true,
+            path: 'app'
         },
     },
     {
@@ -124,19 +131,12 @@ const modules = {
 const projectConfig = {
     jwtSecret: process.env.JWT_SECRET,
     cookieSecret: process.env.COOKIE_SECRET,
-    database_database: "./medusa-db.sql",
-    database_type: DATABASE_TYPE,
     store_cors: STORE_CORS,
+    database_url: DATABASE_URL,
     admin_cors: ADMIN_CORS,
     // Uncomment the following lines to enable REDIS
     // redis_url: REDIS_URL
-}
-
-if (DATABASE_URL && DATABASE_TYPE === "postgres") {
-    projectConfig.database_url = DATABASE_URL;
-    delete projectConfig["database_database"];
-}
-
+};
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
