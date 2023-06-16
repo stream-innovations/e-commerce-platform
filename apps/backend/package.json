@@ -19,12 +19,8 @@
         "test": "cross-env jest",
         "seed": "cross-env medusa seed -f ./data/seed.json",
         "start": "cross-env npm run build && medusa start",
-        "start:custom": "cross-env npm run build && node --preserve-symlinks index.js",
-        "dev": "cross-env npm run build && medusa develop",
-        "build:admin": "medusa-admin build"
     },
     "dependencies": {
-        "@babel/preset-typescript": "^7.21.4",
         "@medusajs/admin": "^6.0.0",
         "@medusajs/cache-inmemory": "^1.8.7",
         "@medusajs/cache-redis": "^1.8.7",
@@ -47,6 +43,7 @@
         "typeorm": "^0.3.16"
     },
     "devDependencies": {
+        "@babel/preset-typescript": "^7.21.4",
         "@babel/cli": "^7.14.3",
         "@babel/core": "^7.14.3",
         "@types/express": "^4.17.13",
