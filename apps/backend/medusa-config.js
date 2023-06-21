@@ -113,34 +113,36 @@ const plugins = [
 ];
 
 const modules = {
-    /*eventBus: {
-      resolve: "@medusajs/event-bus-redis",
-      options: {
-        redisUrl: REDIS_URL
-      }
-    },
-    cacheService: {
-      resolve: "@medusajs/cache-redis",
-      options: {
-        redisUrl: REDIS_URL
-      }
-    },*/
-}
+    // eventBus: {
+    //   resolve: "@medusajs/event-bus-redis",
+    //   options: {
+    //     redisUrl: process.env.REDIS_URL
+    //   }
+    // },
+    // cacheService: {
+    //   resolve: "@medusajs/cache-redis",
+    //   options: {
+    //     redisUrl: process.env.REDIS_URL
+    //   }
+    // },
+  };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
-    jwtSecret: process.env.JWT_SECRET,
-    cookieSecret: process.env.COOKIE_SECRET,
-    store_cors: STORE_CORS,
-    database_url: DATABASE_URL,
-    admin_cors: ADMIN_CORS,
-    // Uncomment the following lines to enable REDIS
-    // redis_url: REDIS_URL
-};
+    // redis_url: process.env.REDIS_URL,
+    database_url: process.env.DATABASE_URL,
+    database_type: "postgres",
+    store_cors: process.env.STORE_CORS,
+    admin_cors: process.env.ADMIN_CORS,
+    database_extra:
+      process.env.NODE_ENV !== "development"
+        ? { ssl: { rejectUnauthorized: false } }
+        : {},
+  };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
     projectConfig,
     plugins,
     modules,
-};
+  };
