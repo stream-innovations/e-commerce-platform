@@ -27,13 +27,13 @@
         "prepare": "npm run build"
     },
     "dependencies": {
-        "@medusajs/admin": "^6.0.1",
+        "@medusajs/admin": "^7.0.0-beta-20230624084632",
         "@medusajs/cache-inmemory": "^1.8.8",
         "@medusajs/cache-redis": "^1.8.8",
         "@medusajs/event-bus-local": "^1.9.5",
         "@medusajs/event-bus-redis": "^1.8.8",
         "@medusajs/file-local": "^1.0.1",
-        "@medusajs/medusa": "^1.12.1",
+        "@medusajs/medusa": "^1.12.2-beta-20230624084632",
         "body-parser": "^1.19.0",
         "cors": "^2.8.5",
         "express": "^4.17.2",
