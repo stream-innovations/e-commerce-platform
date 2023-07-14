@@ -24,6 +24,7 @@
         "serve": "medusa start",
         "heroku-postbuild": "medusa migrations run",
         "build:admin": "cross-env medusa-admin build",
+        "build:admin-vercel": "medusa-admin build --deployment",
         "prepare": "npm run build"
     },
     "dependencies": {
